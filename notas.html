@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Notas - Portal Acadêmico 2025.2</title>
+  <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+  <style>
+    body {
+      background-color: #f8f9fa;
+      font-family: 'Inter', sans-serif;
+    }
+    .form-box {
+      max-width: 600px;
+      margin: 8vh auto;
+      background: white;
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="form-box">
+    <h5 class="text-center text-primary mb-4 fw-semibold" id="boasVindas">Cadastro de Notas</h5>
+
+    <form>
+      <div class="mb-3">
+        <label class="form-label">Nome</label>
+        <input type="text" class="form-control" placeholder="Nome do aluno" required>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6 mb-3">
+          <label class="form-label">RGM</label>
+          <input type="text" class="form-control" required>
+        </div>
+        <div class="col-md-6 mb-3">
+          <label class="form-label">Turma</label>
+          <input type="text" class="form-control" required>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6 mb-3">
+          <label class="form-label">Nota 1</label>
+          <input type="number" step="0.01" class="form-control" required>
+        </div>
+        <div class="col-md-6 mb-3">
+          <label class="form-label">Nota 2</label>
+          <input type="number" step="0.01" class="form-control" required>
+        </div>
+      </div>
+
+      <div class="text-center mt-4">
+        <button type="submit" class="btn btn-primary px-4 me-2">Salvar</button>
+        <button type="reset" class="btn btn-light border px-4">Limpar</button>
+        <button type="button" id="sair" class="btn btn-danger px-4 ms-2">Sair</button>
+      </div>
+    </form>
+  </div>
+
+  <script src="bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const usuario = localStorage.getItem("usuarioLogado");
+      if (usuario) {
+        document.getElementById("boasVindas").textContent = `Bem-vindo(a), ${usuario}!`;
+      }
+
+      // botão sair
+      document.getElementById("sair").addEventListener("click", () => {
+        localStorage.removeItem("usuarioLogado");
+        window.location.href = "index.html";
+      });
+    });
+  </script>
+</body>
+</html>

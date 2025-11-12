@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login - Portal Acadêmico 2025.2</title>
+  <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+  <style>
+    body {
+      background-color: #f8f9fa;
+      font-family: 'Inter', sans-serif;
+    }
+    .login-box {
+      max-width: 360px;
+      margin: 10vh auto;
+      background: white;
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="login-box text-center">
+    <img src="#" alt="Logo Cruzeiro do Sul EAD" class="mb-3" style="max-width:90px;">
+    <h5 class="mb-4 text-primary">Portal Acadêmico 2025.2</h5>
+
+    <form id="loginForm">
+      <div class="input-group mb-3">
+        <span class="input-group-text">👤</span>
+        <input type="text" id="usuario" class="form-control" placeholder="Usuário (RGM ou nome)" required>
+      </div>
+
+      <div class="input-group mb-4">
+        <span class="input-group-text">🔒</span>
+        <input type="password" id="senha" class="form-control" placeholder="Senha" required>
+      </div>
+
+      <button type="submit" class="btn btn-primary w-100">Entrar</button>
+    </form>
+  </div>
+
+  <script src="bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script>
+    // Aguarda o DOM carregar antes de aplicar o script
+    document.addEventListener("DOMContentLoaded", () => {
+      const form = document.getElementById("loginForm");
+
+      form.addEventListener("submit", (e) => {
+        e.preventDefault(); // impede envio padrão
+
+        const usuario = document.getElementById("usuario").value.trim();
+        const senha = document.getElementById("senha").value.trim();
+
+        if (usuario === "" || senha === "") {
+          alert("Preencha usuário e senha.");
+          return;
+        }
+
+        // salva o nome para a próxima página
+        localStorage.setItem("usuarioLogado", usuario);
+
+        // redireciona
+        window.location.href = "notas.html";
+      });
+    });
+  </script>
+</body>
+</html>
